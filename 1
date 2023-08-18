@@ -1,0 +1,30 @@
+Certainly! Here's a more efficient version of the menu script that avoids the repetition of code:
+
+```bash
+#!/bin/bash
+
+scripts=("client1.sh" "client2.sh" "server.sh")
+
+while true; do
+    echo "Menu:"
+    for i in "${!scripts[@]}"; do
+        echo "$((i+1)). Run ${scripts[i]}"
+    done
+    echo "$(( ${#scripts[@]} + 1 )). Exit"
+    
+    read -p "Enter your choice: " choice
+    
+    if (( choice >= 1 && choice <= ${#scripts[@]} )); then
+        ./"${scripts[choice-1]}"
+    elif (( choice == ${#scripts[@]} + 1 )); then
+        echo "Exiting menu."
+        exit 0
+    else
+        echo "Invalid choice. Please select a valid option."
+    fi
+done
+```
+
+This version uses an array called `scripts` to hold the script names. It then loops through the array to display the menu options dynamically. When a choice is made, it checks if the choice is within the valid range of options and then executes the corresponding script. The exit option is also handled more elegantly.
+
+Again, save this script in a file named `menu.sh` and make sure the execute permissions are set. Replace `"client1.sh"`, `"client2.sh"`, and `"server.sh"` with the actual script names if they are located in the same directory.
