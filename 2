@@ -1,0 +1,40 @@
+Sure, I can help you create a simple menu script that runs the specified scripts based on user input. Here's an example of what the menu script could look like:
+
+```bash
+#!/bin/bash
+
+while true; do
+    echo "Menu:"
+    echo "1. Run client1.sh"
+    echo "2. Run client2.sh"
+    echo "3. Run server.sh"
+    echo "4. Exit"
+    
+    read -p "Enter your choice: " choice
+    
+    case $choice in
+        1)
+            ./client1.sh
+            ;;
+        2)
+            ./client2.sh
+            ;;
+        3)
+            ./server.sh
+            ;;
+        4)
+            echo "Exiting menu."
+            exit 0
+            ;;
+        *)
+            echo "Invalid choice. Please select a valid option."
+            ;;
+    esac
+done
+```
+
+Save this script in a file named `menu.sh` in the same directory as your other scripts (`client1.sh`, `client2.sh`, `server.sh`). Make sure the scripts have execute permissions (you can use `chmod +x scriptname.sh` to give execute permissions).
+
+When you run `menu.sh`, it will display a menu with options to run the respective scripts. Just enter the number corresponding to the script you want to run. If you want to exit the menu, choose option 4.
+
+Remember to replace `./client1.sh`, `./client2.sh`, and `./server.sh` with the actual paths to your script files.
